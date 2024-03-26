@@ -22,6 +22,7 @@ int* generate_almost_sorted_array(int size) {
 
 	int* random_array = generate_random_array(size);
 	// TODO: here, you have to sort this array.
+
 		int swap_count = size * 0.03;
 	for (int i = 0; i < swap_count; ++i) {
 		int first_index = std::rand() % size;
@@ -33,27 +34,56 @@ int* generate_almost_sorted_array(int size) {
 	return random_array;
 }
 
-int* insertion_sort(int* arr, int size) {
-	return nullptr;
+void swap(int* arr, int x, int y) {
+	int temp = arr[x];
+	arr[x] = arr[y];
+	arr[y] = temp;
 }
 
-int* selection_sort(int* arr, int size) {
-	return nullptr;
+void insertion_sort(int* arr, int size) {
+	for (int i = 1; i < size; ++i) {
+
+		int temp = arr[i];
+		for (int j = i - 1; j >= 0 && temp < arr[j]; --j) {
+			arr[j + 1] = arr[j];
+			arr[j] = temp;
+		}
+	}
 }
 
-int* bubble_sort(int* arr, int size) {
-	return nullptr;
+void selection_sort(int* arr, int size) {
+	for (int i = 0; i < size - 1; ++i) {
+		int min = INT_MAX;
+		int minIndex;
+		for (int j = i; j < size; ++j) {
+			if (arr[j] < min) {
+				min = arr[j];
+				minIndex = j;
+			}
+		}
+
+		swap(arr, i, minIndex);
+	}
 }
 
-int* quick_sort(int* arr, int size) {
-	return nullptr;
+void bubble_sort(int* arr, int size) {
 }
+
+void quick_sort(int* arr, int size) {
+}
+
 
 int main() {
-	int* arr = generate_random_array(1000);
+	int* arr = generate_random_array(100);
 
-	for (int i = 0; i < 1000; ++i)
+	for (int i = 0; i < 100; ++i)
 		print(arr[i]);
 
+	selection_sort(arr, 100);
+	print("\n\n---After Sort---\n\n");
+
+	for (int i = 0; i < 100; ++i)
+		print(arr[i]);
+	
 	return 0;
 }
