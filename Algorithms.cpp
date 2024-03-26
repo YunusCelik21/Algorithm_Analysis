@@ -3,9 +3,18 @@
 #include <iostream>
 #define print(x) std::cout << x << std::endl
 
+// returns an int array of given size with random values between 10 (inclusive) and 100 (exclusive)
 int* generate_random_array(int size) {
-	// TODO: you have to implement this
-	return nullptr;
+	if (size <= 0)
+		return nullptr;
+
+	srand((unsigned int)time(NULL));
+	int* arr = new int[size];
+
+	for (int i = 0; i < size; ++i) 
+		arr[i] = std::rand() % 90 + 10;
+	
+	return arr;
 }
 
 int* generate_almost_sorted_array(int size) {
@@ -24,27 +33,27 @@ int* generate_almost_sorted_array(int size) {
 	return random_array;
 }
 
-int* insertion_sort(int*& array, int size) {
+int* insertion_sort(int* arr, int size) {
 	return nullptr;
 }
 
-int* selection_sort(int*& array, int size) {
+int* selection_sort(int* arr, int size) {
 	return nullptr;
 }
 
-int* bubble_sort(int*& array, int size) {
+int* bubble_sort(int* arr, int size) {
 	return nullptr;
 }
 
-int* quick_sort(int*& array, int size) {
-	print("This is inside function: " + array);
-	return array;
+int* quick_sort(int* arr, int size) {
+	return nullptr;
 }
 
 int main() {
-	int arr[5] = {1,3,5,7,9};
-	int* arr2 = arr;
-	print(arr);
-	print(arr2);
-	quick_sort(arr);
+	int* arr = generate_random_array(1000);
+
+	for (int i = 0; i < 1000; ++i)
+		print(arr[i]);
+
+	return 0;
 }
