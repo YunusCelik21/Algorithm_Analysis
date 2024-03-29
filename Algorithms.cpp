@@ -76,17 +76,22 @@ void selection_sort(int* arr, int size) {
 }
 
 void bubble_sort(int* arr, int size) {
+	int time = 0;
 	for (int i = size - 1; i > 0; --i) {
 		for (int j = 0; j < i; ++j) {
-			if (arr[j] > arr[j + 1])
+			++time;
+			if (arr[j] > arr[j + 1]) {
 				swap(arr, j + 1, j);
+				time += 15;
+			}
 		}
 	}
+
+	print("Time: " << time);
 }
 
 void quick_sort(int* arr, int size) {
 }
-
 
 int main() {
 	int* arr = generate_random_array(400);
