@@ -41,17 +41,23 @@ void swap(int* arr, int x, int y) {
 }
 
 void insertion_sort(int* arr, int size) {
+	int time = 0;
 	for (int i = 1; i < size; ++i) {
 
 		int temp = arr[i];
 		for (int j = i - 1; j >= 0 && temp < arr[j]; --j) {
 			arr[j + 1] = arr[j];
 			arr[j] = temp;
+			time += 11;
 		}
+		++time;
 	}
+
+	print("Time: " << time);
 }
 
 void selection_sort(int* arr, int size) {
+	int time = 0;
 	for (int i = 0; i < size - 1; ++i) {
 		int min = INT_MAX;
 		int minIndex;
@@ -60,13 +66,22 @@ void selection_sort(int* arr, int size) {
 				min = arr[j];
 				minIndex = j;
 			}
+			++time;
 		}
-
 		swap(arr, i, minIndex);
+		time += 15;
 	}
+
+	print("Time: " << time);
 }
 
 void bubble_sort(int* arr, int size) {
+	for (int i = size - 1; i > 0; --i) {
+		for (int j = 0; j < i; ++j) {
+			if (arr[j] > arr[j + 1])
+				swap(arr, j + 1, j);
+		}
+	}
 }
 
 void quick_sort(int* arr, int size) {
@@ -74,15 +89,11 @@ void quick_sort(int* arr, int size) {
 
 
 int main() {
-	int* arr = generate_random_array(100);
+	int* arr = generate_random_array(400);
 
-	for (int i = 0; i < 100; ++i)
-		print(arr[i]);
 
-	selection_sort(arr, 100);
-	print("\n\n---After Sort---\n\n");
-
-	for (int i = 0; i < 100; ++i)
+	bubble_sort(arr, 400);
+	for (int i = 0; i < 400; ++i)
 		print(arr[i]);
 	
 	return 0;
