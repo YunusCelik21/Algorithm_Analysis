@@ -20,7 +20,6 @@ int* generate_random_array(int size) {
 void quick_sort(int*& arr, const int begin, const int end, double& time);
 
 int* generate_almost_sorted_array(int size) {
-	srand((unsigned int)time(NULL));
 
 	int* random_array = generate_random_array(size);
 	double time = 0;
@@ -51,9 +50,10 @@ double insertion_sort(int*& arr, const int size) {
 		int j = i - 1;
 		for (; j >= 0 && temp < arr[j]; --j) {
 			arr[j + 1] = arr[j];
-			arr[j] = temp;
-			time += 10 + 1;
+			time += 5 + 1;
 		}
+		arr[j + 1] = temp;
+		time += 5;
 		if (j >= 0)
 			++time;
 	}
