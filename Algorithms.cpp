@@ -63,8 +63,8 @@ int insertion_sort(int*& arr, const int size) {
 int selection_sort(int*& arr, const int size) {
 	int time = 0;
 	for (int i = 0; i < size - 1; ++i) {
-		int minIndex = 0;
-		for (int j = i; j < size; ++j) {
+		int minIndex = i;
+		for (int j = i + 1; j < size; ++j) {
 			if (arr[j] < arr[minIndex]) 
 				minIndex = j;
 			++time;
