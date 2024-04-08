@@ -144,9 +144,9 @@ public:
 
 	Truck() : trees(nullptr), size(0) {}
 	Truck(int size) {
-		// trees = generate_random_array(size);
+		trees = generate_random_array(size);
 		// used when almost sorted arrays are needed
-		trees = generate_almost_sorted_array(size);
+		// trees = generate_almost_sorted_array(size);
 		this->size = size;
 	}
 	~Truck() {
@@ -160,8 +160,8 @@ public:
 			delete[] trees;
 
 		if (size > 0) {
-			// trees = generate_random_array(size);
-			trees = generate_almost_sorted_array(size);
+			trees = generate_random_array(size);
+			// trees = generate_almost_sorted_array(size);
 			this->size = size;
 		}
 		else {
@@ -173,8 +173,8 @@ public:
 	void shuffle() {
 		if (trees != nullptr) {
 			delete[] trees;
-			// trees = generate_random_array(size);
-			trees = generate_almost_sorted_array(size);
+			trees = generate_random_array(size);
+			// trees = generate_almost_sorted_array(size);
 		}
 	}
 }; 
@@ -190,7 +190,7 @@ int main() {
 	
 	print("--------------------\nFIRST OR SECOND TASK\n--------------------");
 	for (int i = 0; i < 10; ++i) {
-		print("Truck " << i + 1 << " with size " << trucks[i].size);
+		print("Truck " << i + 1 << " with size 2^" << i + 3);
 		int inser = 0, selec = 0, bubb = 0, quick = 0;
 		// repeating 5 times with different arrays and taking the average
 		for (int j = 0; j < 5; ++j) {
@@ -213,7 +213,7 @@ int main() {
 
 	print("----------\nTHIRD TASK\n----------");
 	for (int i = 0; i < 10; ++i) {
-		print("\nTruck " << i + 1 << " with size " << trucks[i].size);
+		print("\nTruck " << i + 1 << " with size 2^" << i + 3);
 		int firstTime = 0, secondTime = 0;
 		for (int j = 0; j < 5; ++j) {
 			quick_sort_two_workers(trucks[i].trees, 0, trucks[i].size - 1, firstTime, secondTime);
